@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anasayfa</title>
+</head>
+<body>
+Merhaba, hangi siteden satış yapmak istediğinizi seçin: </br></br>
+
+{% for website in websites %}
+    <a href="/{{ website.id }}">{{ website.name }}</a> </br>
+{% endfor %}
+
+</body>
+</html>

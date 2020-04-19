@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anasayfa</title>
+</head>
+<body>
+{{ website.name }} detayına hoşgeldiniz, lütfen satış yapmak istediğiniz kategoriyi seçiniz. <a href="/">Başka site seç</a> </br></br>
+
+{% for category in categories %}
+    <a href="/{{ website.id }}/{{ category.id }}/">{{ category.name }} (%{{ category.commission }})</a> </br>
+{% endfor %}
+
+</body>
+</html>

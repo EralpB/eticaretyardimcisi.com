@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ website.name }} sitesinde {{ category.name }} kategorisini  seçtiniz, komisyon oranı %{{ category.commission }} <a href="/{{ website.id }}">Başka kategori seç</a>
+
+</br></br>
+<form method="get">
+    <label>Son Satış Fiyatı</label>
+    <input type="text" name="lastprice">
+    <button type="submit" name="calculatetype" value="calculateprofit">Elde Kalacak Parayı Hesapla</button>
+
+    </br></br>Veya</br></br>
+
+    <label>Elde Kalacak Para</label>
+    <input type="text" name="profit">
+    <button type="submit" name="calculatetype" value="calculatelastprice">Son Fiyatı Hesapla</button> </br>
+</form>
+
+</br></br>
+
+{% if last_price %}
+    Son Kullanıcı Fiyatı: {{ last_price|floatformat }} TL </br> Komisyon: {{ commission|floatformat }} TL </br>Elde kalan: {{ profit|floatformat }} TL</br>
+{% endif %}
+</body>
+</html>
