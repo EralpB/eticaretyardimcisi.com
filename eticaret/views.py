@@ -7,6 +7,7 @@ from eticaret.models import Website, Category
 
 class HomePageView(TemplateView):
 
+
     template_name = "index.html"
 
     def get_context_data(self, **kwargs):
