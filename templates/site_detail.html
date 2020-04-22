@@ -1,15 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Anasayfa</title>
-</head>
-<body>
-{{ website.name }} detayına hoşgeldiniz, lütfen satış yapmak istediğiniz kategoriyi seçiniz. <a href="/">Başka site seç</a> </br></br>
+    <head>
+        <meta charset="UTF-8">
+        <title>Anasayfa</title>
+        <style type="text/css">
+            .backgroundcolor {
+                background-color: #F8F9FA;
+            }
+        </style>
+        {% load staticfiles %}
+            <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}" >
+    </head>
 
-{% for category in categories %}
-    <a href="/{{ website.id }}/{{ category.id }}/">{{ category.name }} (%{{ category.commission }})</a> </br>
-{% endfor %}
+    <body>
+        {% include "navbar.html" %}
+        <div class="container-fluid backgroundcolor">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 ><p class="text-center"><span class="text-info">{{ website.name }}</span> e-ticaret sitesinin detay bilgilerine hoşgeldiniz. <span class="text-info">Kayıt belgeleri</span>, <span class="text-info"> kategori </span> ve <span class="text-info"> komisyon bilgileri </span>  aşağıdadır.</p>
+                    </h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1><span class="text-info"> Kayıt için gerekli belgeler</span></h1>
+                    <p class="text-danger">Şahıs Şirketleri için:</p>
+                    <ul>
+                        <li>Vergi Levhası (Son 1 yıl)</li>
+                        <li>İmza Sirküleri (Sicil kaydı bulunmuyor ise imza beyanı evrağı eklenebilir.)</li>
+                        <li>Nüfus Cüzdanı Fotokopisi ( Sadece ön yüz )</li>
+                        <li>Çalışma Mali Şart ve Prensipleri (Komisyon anlaşması)</li>
+                        <li>Satıcı İlan ve İşlem Sözleşmesi (n11.com Sözleşmesi)</li>
+                    </ul>
+                    <div class="col-md-7">
+                        <hr style="background-color:#FFC106 !important; height:1px;">
+                    </div>
+                    <p class="text-danger">Sermaye Şirketleri veya Adi Ortaklıklar için:</p>
+                    <ul>
+                        <li>Güncel Faaliyet Belgesi (Son 6 ay) - Faaliyet belgeniz bulunmuyor ise güncel KDV tahakkuk fişinizi ilgili kısma ekleyebilirsiniz.</li>
+                        <li>Vergi Levhası (Son 1 Yıl)</li>
+                        <li>Kuruluş Ticaret Sicil Gazetesi</li>
+                        <li>İmza Sirküleri</li>
+                        <li>Ortaklık Sözleşmesi (Adi Ortaklıklar için)</li>
+                        <li>Çalışma Mali Şart ve Prensipleri (n11.com Komisyon Anlaşması)</li>
+                        <li>Satıcı İlan ve İşlem Sözleşmesi (n11.com Sözleşme)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h1><span class="text-info">{{ website.name }}</span>'e ait kategoriler ve komisyon oranları aşağıdadır.</h1>
+                    {% for category in categories %}
+                        <a href="/{{ website.id }}/{{ category.id }}/">{{ category.name }} (%{{ category.commission }})</a> </br>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-center"><a href="/">Diğer e-ticaret sitelerini görüntülemek için tıklayınız.</a></p>
+                </div>
+            </div>
+        </div>
 
-</body>
+
+        {% load staticfiles %}
+            <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
 </html>

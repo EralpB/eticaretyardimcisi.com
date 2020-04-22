@@ -2,28 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>Title</title>
+    <style type="text/css">
+        .backgroundcolor {
+            background-color: #F8F9FA;
+        }
+    </style>
+    {% load staticfiles %}
+        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}" >
 </head>
-<body>
-{{ website.name }} sitesinde {{ category.name }} kategorisini  seçtiniz, komisyon oranı %{{ category.commission }} <a href="/{{ website.id }}">Başka kategori seç</a>
+<body class="backgroundcolor">
+    {% include 'navbar.html' %}
+    <div class="container-fluid backgroundcolor">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <h4 ><p class="text-center"><span class="text-info">{{ website.name }}</span> sitesindeki  <span class="text-info">{{ category.name }} </span> kategorisinin komisyon oranı <span class="text-info"> %{{ category.commission }} </span>'dir. Komisyon bilgileriyle hesap yapmak için aşağıdaki formu doldurunuz. </p>
+                    </h4>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 border border-primary" >
+                <form method="get">
+                    <div class="form-row pl-3 mt-2">
+                        <div class="form-group col-md-5">
+                            <label>Son Satış Fiyatı:</label>
+                            <input for="inputLastPrice" class="form-control" type="text" name="lastprice">
+                            <button type="submit" class="btn btn-success btn-md mt-2" name="calculatetype" value="calculateprofit" id="inputLastPrice">Elde Kalacak Parayı Hesapla</button>
+                        </div>
+                    </div>
 
-</br></br>
-<form method="get">
-    <label>Son Satış Fiyatı</label>
-    <input type="text" name="lastprice">
-    <button type="submit" name="calculatetype" value="calculateprofit">Elde Kalacak Parayı Hesapla</button>
+                    <div class="form-row pl-3">
+                        <div class="form-group col-md-5">
+                            <label for="inputRemainingMoney">Elde Kalacak Para:</label>
+                            <input type="text" name="profit" class="form-control" placeholder="Ürününüze ait fiyat bilgisi">
+                            <button type="submit" class="btn btn-success btn-md mt-2" name="calculatetype" value="calculatelastprice" id="inputRemainingMoney">Son Fiyatı Hesapla</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <div class="col-md-12">
+                    <h5 class="text-info"> Hesaplama Sonucunuz: </h5>
+                </div>
+                <div class="col-md-12">
+                {% if last_price %}
+                    <p class="text-warning">Son Kullanıcı Fiyatı:</p>
+                    <ul>
+                        <li> Son kullanıcı: {{ last_price|floatformat }} TL </li>
+                        <li> Komisyon: {{ commission|floatformat }} TL </li>
+                        <li> Elde kalan: {{ profit|floatformat }} TL</li>
+                    </ul>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <p class="text-center"> Başka bir kategori seçmek için tıklayınız. <a href="/{{ website.id }}">Başka kategori seç</a></p>
+            </div>
+        </div>
+    </div>
 
-    </br></br>Veya</br></br>
-
-    <label>Elde Kalacak Para</label>
-    <input type="text" name="profit">
-    <button type="submit" name="calculatetype" value="calculatelastprice">Son Fiyatı Hesapla</button> </br>
-</form>
-
-</br></br>
-
-{% if last_price %}
-    Son Kullanıcı Fiyatı: {{ last_price|floatformat }} TL </br> Komisyon: {{ commission|floatformat }} TL </br>Elde kalan: {{ profit|floatformat }} TL</br>
-{% endif %}
+    {% load staticfiles %}
+        <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
