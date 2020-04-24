@@ -23,6 +23,7 @@ class SiteDetailView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         website = Website.objects.get(id=kwargs['pk'])
+        context['websites'] = Website.objects.all()
         context['website'] = website
         context['categories'] = Category.objects.filter(website=website)
         return context
