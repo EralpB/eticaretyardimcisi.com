@@ -1,76 +1,15 @@
-        <div class="container-fluid backgroundcolor mt-2">
+        <div class="container-fluid backgroundcolor">
             <div class="row-2">
                 <div class="col-md-12 text-center">
                     <h1> E-Ticaret Yardımcısı'na Hoşgeldiniz! </h1>
-                    <p class="h4">E-Ticaret ürün <u class="text-info">maliyetini</u> hesaplamanın en kolay yolu burası.</p>
+                    <p class="h4">E-Ticaret ürün <i class="text-info">maliyetini</i> hesaplamanın en kolay yolu burası.</p>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-1"></div>
+                <div class="offset-md-3 col-md-6 border border-warning">
+                    <h3 class="text-info pl-3"> <i>Türkiye'de hizmet veren e-ticaret siteleri</i> </h3>
 
-                <div class="col-md-5 border border-primary" >
-                    <form method="get">
-                        <div class="form-row ml-3 mt-2">
-                            <div class="form-group col-md-5">
-                                <label for="inputWebSite">E-Ticaret Sitesi:</label>
-                                <select name="websiteInfo" id="inputWebSite" class="form-control  border border-danger">
-                                    <option  selected>Seçiniz..</option>
-                                    {% for website in websites %}
-                                        <option value="{{ website.id }}">{{ website.name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-
-                            <div class="col-md-2"></div>
-
-                            <div class="form-group col-md-5">
-                                <label for="inputCategory">Kategori Seçiniz:</label>
-                                <input type="text" name="websiteCategory" class="form-control  border border-danger" id="inputCategory" placeholder="Ürününüze ait kategori bilgisi">
-                            </div>
-                        </div>
-
-                        <div class="form-row ml-3">
-                            <div class="form-group col-md-5">
-                                <label for="inputPrice">Satış Fiyatı:</label>
-                                <input type="text" name="websiteCategory" class="form-control  border border-danger" id="inputPrice" placeholder="Ürününüze ait fiyat bilgisi">
-                            </div>
-
-                            <div class="col-md-2"></div>
-
-                            <div class="form-group col-md-5">
-                                <label for="inputCargoPrice">Kargo Ücreti:</label>
-                                <input type="text" name="cargoPrice" class="form-control  border border-warning" id="inputCargoPrice" placeholder="Ürününüze ait Kargo ücreti">
-                            </div>
-                        </div>
-
-                        <div class="form-row ml-3">
-                            <div class="form-group col-md-5">
-                                <label for="inputTaxRate">KDV Oranı:</label>
-                                <select name="taxRate" id="inputTaxRate" class="form-control  border border-danger">
-                                    <option selected>Seçiniz..</option>
-                                    <option value="18">%18</option>
-                                    <option value="8">%8</option>
-                                    <option value="1">%1</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-2"></div>
-
-                            <div class="form-group col-md-5">
-                                <label for="inputCargoPrice">Paketleme Ücreti:</label>
-                                <input type="text" name="packagePrice" class="form-control  border border-warning" id="inputCargoPrice" placeholder="Ürününüze ait paketleme ücreti">
-                            </div>
-                      </div>
-                      <button type="submit" class="btn btn-success btn-lg mb-2 float-right" style="width:250px;">Maliyet Hesapla</button>
-                    </form>
-                </div>
-
-                <div class="col-md-1 mt-2"></div>
-
-                <div class="col-md-4 border border-warning">
-                    <h3 class="text-info pl-3"> <u>Türkiye'de hizmet veren e-ticaret siteleri</u> </h3>
-
-                    <h5 class=" pl-3"> E-ticaret siteleri ile ilgili <span class="text-warning font-italic"> <u>kategori</u>, <u>komisyon</u> ve <u>kayıt bilgilerini</u> </span> bağlantılara tıklayarak bulabilirsiniz. </h5>
+                    <h5 class=" pl-3"> E-ticaret siteleri ile ilgili <span class="text-warning font-italic"> <i>kategori</i>, <i>komisyon</i> ve <i>kayıt bilgilerini</i> </span> bağlantılara tıklayarak bulabilirsiniz. </h5>
                     <ul>
                         {% for website in websites %}
                             <li><a href="/{{ website.id }}"> {{ website.name }} </a> </li>

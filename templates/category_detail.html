@@ -26,15 +26,15 @@
             <div class="col-md-5 border border-primary" >
                 <form method="get">
                     <div class="form-row pl-3 mt-2">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-8">
                             <label>Son Satış Fiyatı:</label>
-                            <input for="inputLastPrice" class="form-control" type="text" name="lastprice">
+                            <input for="inputLastPrice" class="form-control" type="text" name="lastprice" placeholder="Son kullanıcı satış fiyatı">
                             <button type="submit" class="btn btn-success btn-md mt-2" name="calculatetype" value="calculateprofit" id="inputLastPrice">Elde Kalacak Parayı Hesapla</button>
                         </div>
                     </div>
 
                     <div class="form-row pl-3">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-8">
                             <label for="inputRemainingMoney">Elde Kalacak Para:</label>
                             <input type="text" name="profit" class="form-control" placeholder="Ürününüze ait fiyat bilgisi">
                             <button type="submit" class="btn btn-success btn-md mt-2" name="calculatetype" value="calculatelastprice" id="inputRemainingMoney">Son Fiyatı Hesapla</button>
@@ -48,11 +48,10 @@
                 </div>
                 <div class="col-md-12">
                 {% if last_price %}
-                    <p class="text-warning">Son Kullanıcı Fiyatı:</p>
                     <ul>
-                        <li> Son kullanıcı: {{ last_price|floatformat }} TL </li>
-                        <li> Komisyon: {{ commission|floatformat }} TL </li>
-                        <li> Elde kalan: {{ profit|floatformat }} TL</li>
+                        <li> Son kullanıcı: <b>{{ last_price|floatformat }} TL</b> </li>
+                        <li> Komisyon: <b>{{ commission|floatformat }} TL</b> </li>
+                        <li> Elde kalan: <b>{{ profit|floatformat }} TL</b></li>
                     </ul>
                 {% endif %}
                 </div>

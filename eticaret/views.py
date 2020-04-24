@@ -11,8 +11,6 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         website = self.request.GET.get('websiteInfo', None)
-
-        print(website)
         context = super().get_context_data(**kwargs)
         context['websites'] = Website.objects.all()
         return context
@@ -38,6 +36,7 @@ class CategoryDetailView(TemplateView):
         context = super().get_context_data(**kwargs)
         website = Website.objects.get(id=kwargs['pk'])
         category = Category.objects.get(id=kwargs['category_pk'])
+        context['websites'] = Website.objects.all()
         context['website'] = website
         context['category'] = category
 
